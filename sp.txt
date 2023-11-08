@@ -29,4 +29,15 @@ Later selenium 4.x replaced JSOn with W3C protocol, now everything is became W3C
 
 How to configure:
 1)Download browser drivers first the extract into a folder.
+2)Set up web driver(https://pypi.org/project/selenium/)
+    a)through pycharm
+    b)pip install selenium
 
+    Pycharm install way:
+            Create a project in file section, once it created- go to file , settings, under project name
+            we will have one thing called python interpretor, click add(+) button there and search for 
+            selenium(selenium), once selenium is selected then click on install package below.
+
+        or by
+        
+         in pycharm terminal window (pip install selenium) run the command inside the brackets.
