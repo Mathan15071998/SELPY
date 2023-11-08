@@ -1,1 +1,32 @@
+                                        SELENIUM WITH PYTHON
+    
+    SELENIUM WEBDRIVER- webdriver here is a component in selenium which used to automate web applications.
+    
+    WebDriver is a module withrespct to module(In Java we call it as a interface).(Module contains functions, 
+classes and etc.)
+    i,e.,
+        Firefox browser- Firefox()
+        Chrome browser- Chrome()
+
+    WebDriver is an API(Application Programming Interface)
+
+
+    Any Web application will have 3 layers which are UI(Presentation layer), Application web server(Business LOGIC)
+and Database(backend layer).
+
+    Business LOGIC will contain more number of programs with multiple classes, collectively those are called
+API's. This API will act as a bridge bw frontend and backend. We find API'S with lot of functions and methods
+and at the same time WebDriver also contains those much methods and functions so we can call it as API.
+
+selenium3.x:
+___________
+selenium Client Library(Python,java,c and ruby)-----JSON protocol-------Browser drivers(W3C protocol)Browsers
+
+JSON protocol- exist to make communication between webdrivers and companies respected web applications/browsers.
+W3C protocol- Protocol followed by all the browsers in the world, communication bw browsers.
+
+Later selenium 4.x replaced JSOn with W3C protocol, now everything is became W3C protocol.
+
+How to configure:
+1)Download browser drivers first the extract into a folder.
 
