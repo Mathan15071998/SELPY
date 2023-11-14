@@ -1,0 +1,49 @@
+Model test case for automation:
+
+1)open web browser(ch/Firefox/IE)
+2)open URL(https://opensource-demo.orangehrmlive.com/)
+3)provide email(admin@yourstore.com)
+4)provide password(admin)
+5)click on login
+6)capture the title of the dashboard page(Actual title)
+7)verify the title of the page:"Dashboard/nopCommerce administration" (Expected)
+8)Close the browser
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+# Open web browser (c/f/e)
+driver = webdriver.Chrome()  # Change to the appropriate browser driver if needed
+
+# Open URL of https://admin-demo.nopcommerce.com/login
+driver.get("https://admin-demo.nopcommerce.com/login")
+
+# Provide Email (admin@yourstore.com)
+email_input = driver.find_element(By.ID, "Email")
+email_input.clear()  # Clear the pre-filled value
+email_input.send_keys("admin@yourstore.com")
+
+# Provide password (admin)
+password_input = driver.find_element(By.ID, "Password")
+password_input.clear()  # Clear the pre-filled value
+password_input.send_keys("admin")
+
+# Click on login
+driver.find_element(By.CLASS_NAME, "button-1").click()
+
+# Capture title of the dashboard page
+dashboard_title = driver.title
+
+# Verify title of the page: "dashboard/nopCommerce administration" (Expected)
+expected_title = "dashboard/nopCommerce administration"
+if dashboard_title == expected_title:
+    print("Title verification successful.")
+else:
+    print("Title verification failed.")
+
+# Close browser
+driver.quit()
+
+
+
