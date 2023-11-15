@@ -1,7 +1,7 @@
 Model test case for automation:
 
 1)open web browser(ch/Firefox/IE)
-2)open URL(https://opensource-demo.orangehrmlive.com/)
+2)Open URL of https://admin-demo.nopcommerce.com/login
 3)provide email(admin@yourstore.com)
 4)provide password(admin)
 5)click on login
@@ -45,5 +45,109 @@ else:
 # Close browser
 driver.quit()
 
+"""Open web browser(c/f/e)
+open url "https://opensource-demo.orangehrmlive.com/
+enter username(Admin)
+enterpassword(admin)
+click on login
+capture title of the home page(Actual title)
+verify title of the page: OrangeHRM(Expected)
+close browser"""
+
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
+import time
+driver=webdriver.Chrome()
+driver.get('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+usrname=WebDriverWait(driver,20).until(EC.presence_of_element_located((By.NAME,"username")))
+usrname.send_keys("Admin")
+passwd=WebDriverWait(driver,20).until(EC.presence_of_element_located((By.NAME,"password")))
+passwd.send_keys("admin123")
+driver.find_element(By.XPATH,'//*[@id="app"]/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button').click()
+act_title=driver.title
+exp_title="OrangeHRM"
+if act_title==exp_title:
+    print("Login test case passed ")
+else:
+    print("Expected title test case failed")
+time.sleep(60)
+driver.close()
 
 
+
+Note:Attribute is also known as properties
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+driver=webdriver.Chrome()
+driver.get("https://demo.nopcommerce.com/")
+driver.maximize_window()#This will maximize the webpage
+#driver.find_element(By.ID,"small-searchterms").send_keys("Lenovo Thinkpad X1 Carbon Laptop")
+
+#time.sleep(10)
+
+#Linktext &Partial Link text:
+#driver.find_element(By.LINK_TEXT,"Register").click()
+#driver.find_element(By.PARTIAL_LINK_TEXT,"Reg").click()
+#time.sleep(10)
+
+
+#Classname and tagname
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+driver=webdriver.Chrome()
+driver.get("https://www.magictoolbox.com/magicslideshow/examples/?v=79cba1185463")
+driver.maximize_window()#This will maximize the webpage
+sliders=driver.find_elements(By.CLASS_NAME,"mss-slide mss-slide-3 mss-centering-img mss-slide-active")
+time.sleep(5)
+print(len(sliders))#total number of sliders on the homepage
+links=driver.find_elements(By.TAG_NAME,"a")
+print(len(links))#total number of links on the homepage
+
+#Customized locators
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver=webdriver.Chrome()
+driver.get("https://www.facebook.com/")
+driver.maximize_window()
+"""CSS SELECTORS
+TAG ID          -tagname#valueofID----input#email  or #value
+TAG CLASS       -tagname.valueof the class--input.inputtext _55r1 _6luy(this will not work because after the inputtext,
+there is a space bw inputtext and _55r1... so we need to give only inputtext here
+TAG ATTRIBUTE    -tagname[attribute=value]
+TAG CLASS ATTRIBUTE-tagname.value of the class[attribute=value]"""
+time.sleep(1)
+"""
+#Tag id concept
+#a=driver.find_element(By.CSS_SELECTOR, "input#email") or by
+a=driver.find_element(By.CSS_SELECTOR, "#email")
+a.send_keys("123")
+time.sleep(5)"""
+"""
+#Tag and class:
+#a=driver.find_element(By.CSS_SELECTOR,"input.inputtext") or by
+a=driver.find_element(By.CSS_SELECTOR,".inputtext")
+a.send_keys("123")
+time.sleep(4)"""
+"""
+#tag and attribute
+#a=driver.find_element(By.CSS_SELECTOR,"input[name=email]") or by
+a=driver.find_element(By.CSS_SELECTOR,"[name=email]")
+a.send_keys("Mathan")
+time.sleep(5)"""
+"""
+#tag,class and attribute:
+#This we need to choose when 2 elments has same tag and class. For instance, fb login email and password box will have same tag and class, if we want to choose 2nd element then choose this method.
+#a=driver.find_element(By.CSS_SELECTOR,"input.inputtext[name=pass]") or by
+a=driver.find_element(By.CSS_SELECTOR,".inputtext[name=pass]")
+a.send_keys("123")
+time.sleep(5)"""
