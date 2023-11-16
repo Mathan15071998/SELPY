@@ -41,3 +41,50 @@ or
 starts-with()
 contains()
 text()
+
+        #XPATH
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.common.exceptions import TimeoutException
+import time
+
+
+d=webdriver.Chrome()
+d.get("https://demo.nopcommerce.com/")
+d.maximize_window()
+#absolute xpath for the searchbox:
+#a=d.find_element(By.XPATH,"/html[1]/body[1]/div[6]/div[1]/div[2]/div[2]/form[1]/input[1]")
+#a.send_keys("Phones")
+#time.sleep(5)
+#a.find_element(By.XPATH,"/html[1]/body[1]/div[6]/div[1]/div[2]/div[2]/form[1]/button[1]").click()
+
+#Relative Xpath:
+#d.find_element(By.XPATH,"//input[@id='small-searchterms']").send_keys("Phones")
+#time.sleep(5)
+#d.find_element(By.XPATH,"//button[@type='submit']").click()
+#time.sleep(5)
+
+#Using operators:
+#OR OPERATOR:
+#d.find_element(By.XPATH,"//*[@id='small-searchterms' or @name='q']").send_keys("Phones")
+#time.sleep(5)
+#d.find_element(By.XPATH,"//*[@type='submit' or @class='button-1 search-box-button']").click()
+
+#AND OPERATOR:
+
+#d.find_element(By.XPATH,"//*[@id='small-searchterms' and  @name='q']").send_keys("Phone")
+#time.sleep(3)
+#d.find_element(By.XPATH,"//*[@type='submit' and @class='button-1 search-box-button']").click()
+#time.sleep(10)
+
+#Contains Operator and starts-with(refer the image)
+#Note:in Contains method, we don't need to specify the entire value, we can just give a partial value of it, while
+#in starts-with method, we will give the initial value.
+
+
+#text function: used to find the innertext in the html code.
+
+d.find_element(By.XPATH,"//a[text()='Computers ']").click() 
+
