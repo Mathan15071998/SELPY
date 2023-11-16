@@ -151,3 +151,33 @@ time.sleep(5)"""
 a=driver.find_element(By.CSS_SELECTOR,".inputtext[name=pass]")
 a.send_keys("123")
 time.sleep(5)"""
+
+
+Write a selenium code for to login fb:
+
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+d = webdriver.Chrome()
+d.get("https://www.facebook.com/")
+d.maximize_window()
+
+wait = WebDriverWait(d, 10)
+
+email = wait.until(EC.presence_of_element_located((By.NAME, "email")))
+email.send_keys("9080594446")
+
+password = wait.until(EC.presence_of_element_located((By.NAME, "pass")))
+password.send_keys("mani jcb")
+password.send_keys(Keys.RETURN)
+
+try:
+    wait.until(EC.url_contains("https://www.facebook.com/"))
+    print("Login successful!")
+except:
+    print("Login failed.")

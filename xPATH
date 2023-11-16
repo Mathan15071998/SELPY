@@ -1,0 +1,43 @@
+                        #Xpath
+
+xPATH defined as xml path which is a syntax or element for finding any element  on the webpage
+using xml path expression. It is used to find the location of any element on a webpage using HTML DOM (Document Object Model).
+xpath basically works based on the DOM.xpath can be used to navigate through elements and attributes in DOM.
+Xpath is an address of the element.
+
+Types of xpath:
+1)Absolute XPATH-full xpath-/html/body/nav/div/div[2]/div[2]/ul/li[2]/a/button
+2)Relative Xpath-partial xpath-//*[@id="navbarSupportedContent"]/div[2]/ul/li[2]/a/button
+
+
+Difference bw relative and full xpath:
+1)Absolute Xpath always start from the root HTML code while relative xpath directly jump to element on DOM.
+2)Absolute Xpath starts with / while relative xpath starts with //
+3)In Absolute Xpath we will only specify the tags or nodes while in relative Xpath we will the attributes and it's value.
+
+In html, we call the tags as tags while in xpath or DOM, we call them as nodes.
+
+
+How to write xpath manually:
+Absolute:html/body/div[6]/div[1]/div[1]/div[2]/div[1]/ul/li[1]/a-register fucntionality's manual full xpath
+relative xpath-//input[@id="small-searchterms"]- here if we don't know the tag name then we can just mention star.
+
+How to capture xpath automatically:
+1)Firebug, firepath(for firefox- now it's depricated)
+2)Browser inbuild feature,  by inspect,highlight and copy either full/relative xpath.
+3)selectors hub extension- available in each Browser.- This will give us not only xpath but 
+also all the locators will be displayed. This will also check the xpath we written is correct or not.
+
+
+
+Which Xpath is preferred the mose? It's relative because, it is more stable than Absolute Xpath(If dev 
+introduced some new features then Absolute Xpath will be broken).
+And if dev changed the location of the element then address of the element will be changed.
+
+
+Xpath options:
+and 
+or 
+starts-with()
+contains()
+text()
