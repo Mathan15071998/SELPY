@@ -1,5 +1,46 @@
 Model test case for automation:
 
+"""1)open web browser(ch/Firefox/IE)
+2)Open URL of https://admin-demo.nopcommerce.com/login
+3)provide email(admin@yourstore.com)
+4)provide password(admin)
+5)click on login
+6)capture the title of the dashboard page(Actual title)
+7)verify the title of the page:"Dashboard/nopCommerce administration" (Expected)
+8)Close the browser
+"""
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver=webdriver.Chrome()
+driver.maximize_window()
+driver.get("https://admin-demo.nopcommerce.com/login")
+
+ur_name=driver.find_element(By.CLASS_NAME,"email")
+ur_name.clear()
+ur_name.send_keys("admin@yourstore.com")
+
+pa_wd=driver.find_element(By.CSS_SELECTOR,"#Password")
+pa_wd.clear()
+pa_wd.send_keys("admin")
+time.sleep(10)
+
+btn=driver.find_element(By.CSS_SELECTOR,"[type='submit']").click()
+time.sleep(5)
+
+
+act_title=driver.title
+exp_title="Dashboard/nopCommerce administration"
+if act_title==exp_title:
+    print("Pass")
+else:
+    print("Fail")
+
+time.sleep(5)
+driver.close()
+
 1)open web browser(ch/Firefox/IE)
 2)Open URL of https://admin-demo.nopcommerce.com/login
 3)provide email(admin@yourstore.com)
@@ -53,6 +94,46 @@ click on login
 capture title of the home page(Actual title)
 verify title of the page: OrangeHRM(Expected)
 close browser"""
+
+"""Open web browser(c/f/e)
+open url "https://opensource-demo.orangehrmlive.com/
+enter username(Admin)
+enterpassword(admin)
+click on login
+capture title of the home page(Actual title)
+verify title of the page: OrangeHRM(Expected)
+close browser"""
+
+
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver=webdriver.Chrome()
+driver.get("https://opensource-demo.orangehrmlive.com/")
+driver.maximize_window()
+time.sleep(15)
+
+ur_name=driver.find_element(By.NAME,"username")
+ur_name.send_keys("Admin")
+time.sleep(5)
+
+pa_wd=driver.find_element(By.NAME,"password")
+pa_wd.send_keys("admin123")
+time.sleep(5)
+
+btn=driver.find_element(By.CSS_SELECTOR,"[type='submit']").click()
+time.sleep(5)
+
+act_title=driver.title
+exp_title="OrangeHRM"
+
+if act_title==exp_title:
+    print("Pass")
+
+else:
+    print("Fail")   
+    or  
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -181,3 +262,42 @@ try:
     print("Login successful!")
 except:
     print("Login failed.")
+
+
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+driver=webdriver.Chrome()
+driver.get("https://www.facebook.com/")
+driver.maximize_window()
+time.sleep(15)
+
+ur_name=driver.find_element(By.ID,"email")
+ur_name.send_keys("9080594446")
+time.sleep(5)
+
+pa_wd=driver.find_element(By.ID,"pass")
+pa_wd.send_keys("mani jcb")
+time.sleep(5)
+
+btn=driver.find_element(By.NAME,"login").click()
+time.sleep(5)
+
+act_title=driver.title
+exp_title="Facebook"
+
+if act_title==exp_title:
+    print("Pass")
+
+else:
+    print("Fail")
+
+cr_acc=driver.find_element(By.PARTIAL_LINK_TEXT,"Create")
+cr_acc.click()
+time.sleep(5)
+
+
+
+
