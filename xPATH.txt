@@ -88,3 +88,16 @@ d.maximize_window()
 
 d.find_element(By.XPATH,"//a[text()='Computers ']").click() 
 
+
+Xpath Axes:Using certain keywords along with xpath is known as xpath axes.
+
+self,parent,child ,ancestor,decendent,following,following-sibling,preceeding,
+preceeding-sibling
+
+
+
+go to the link of https://money.rediff.com/gainers/bse/daily/groupa
+
+choose any/tata investment- inspect- copy __path__
+
+//a[normalize-space()='Tata Investment']/self::a   = this is the xpath+axe
