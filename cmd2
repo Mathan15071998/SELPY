@@ -1,0 +1,86 @@
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+driver=webdriver.Firefox()
+driver.get("https://demo.nopcommerce.com/")
+driver.maximize_window()
+
+#Find_element():It returns single web element
+#Scenario 1:locator matiching with single web element:
+#search_box=driver.find_element(By.XPATH,"//input[@id='small-searchterms']")
+#search_box.send_keys("Phone")#send keys will be shown for find_element
+#time.sleep(5)
+
+
+#Scenario 2: Locator matching with multiple web elements: i,e same page capture all the footer sec links
+
+#a=driver.find_element(By.XPATH,"//div[@class='footer-upper']//a")#here the locator is pointing to 22 web elements but since we mentioned only find by element, which will return the 1 st web element for action.
+#print(a.text)# this will capture the txt of the element we used to find. # This returned "sitemap"
+
+#Scenario 3:Element not available then NoSuchElement exception
+
+#Let's try to capture the link of login in the webpage:
+
+#a=driver.find_element(By.LINK_TEXT,"Log in")
+#a.click()
+#time.sleep(10)# This is the correct code so it will work fine, if I make some changes in the value, then NoSuchElement exception error will be thrown. This is to denote, driver, could not find the element in the web application.
+
+
+#a=driver.find_element(By.LINK_TEXT,"Log")# here I should choosed partial link text instead I went for Link text.
+#a.click()
+#time.sleep(10)
+#selenium.common.exceptions.NoSuchElementException:
+# Message: Unable to locate element: Log; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+
+
+
+
+
+#Find_elements:
+#Scenario 1:locator matiching with single web element:
+#search_box=driver.find_elements(By.XPATH,"//input[@id='small-searchterms']")#here we are pointing multiple webelements so we will not get send_keys method here.
+#print(len(search_box))#1
+#search_box[0].send_keys("Phone")#here web elements will return in collection format, if we have to access ,we need to use indexing even if the value we passed pointing to only one web element.
+#time.sleep(5)
+#driver.close()
+
+
+#Scenario 2: Locator matching with multiple web elements: i,e same page capture all the footer sec links
+#a=driver.find_elements(By.XPATH,"//div[@class='footer-upper']//a")#here the locator is pointing to 22 web elements but since we mentioned only find by element, which will return the 1 st web element for action.
+#print(len(a))#22
+#print(a[0].text)#let's print the first element in the list which is :Sitemap
+#if I want to access all the texts in the list, then I have to follow loop:
+#for b in a:
+ #   print(b.text)
+
+"""Sitemap
+Shipping & returns
+Privacy notice
+Conditions of Use
+About us
+Contact us
+Search
+News
+Blog
+Recently viewed products
+Compare products list
+New products
+My account
+Orders
+Addresses
+Shopping cart
+Wishlist
+Apply for vendor account
+Facebook
+Twitter
+RSS
+YouTube"""
+
+
+#Scenario 3:Element not available then NoSuchElement exception
+
+#Let's try to capture the link of login in the webpage:
+
+a=driver.find_elements(By.LINK_TEXT,"Log")#SINCE there is no element like Log in the web page, it will return 0 in this elements method.
+print(len(a))#it will return 0 instead of throwing any error.
