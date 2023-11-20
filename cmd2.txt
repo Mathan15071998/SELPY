@@ -84,3 +84,32 @@ YouTube"""
 
 a=driver.find_elements(By.LINK_TEXT,"Log")#SINCE there is no element like Log in the web page, it will return 0 in this elements method.
 print(len(a))#it will return 0 instead of throwing any error.
+
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+driver=webdriver.Chrome()
+driver.get("https://admin-demo.nopcommerce.com/login")
+driver.maximize_window()
+"""
+a=driver.find_element(By.ID,"Email")
+a.clear()
+a.send_keys("admin@yourstore.com")
+#Note:text method will always and only return inner text's value
+print("Txt method:",a.text)#return nothing, since there is no inner text in the html
+print("Attribute method: ",a.get_attribute("Value"))#what we send will be captureed and returned. Also, this atrribute method returns any atrribiute's value in the web element.
+"""
+
+#Another example:
+
+btn=driver.find_element(By.XPATH,"//button[@type='submit']")
+print("Text method:",btn.text)#Log in will be returned.
+print("Attribute Method: ",btn.get_attribute("Value"))#since there is no value attribute in the web page, it will return none.
+print("Attribute method: ",btn.get_attribute("type"))#submit is the value for the type attribute.
+
+#Text method: LOG IN
+#Attribute Method:  None
+#Attribute method:  submit
+
