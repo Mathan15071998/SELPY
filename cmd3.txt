@@ -1,0 +1,54 @@
+                                #Wait commands:Implicit and Explicit commands(supported by selenium):time.sleep(is a python command)
+#using time.sleep() often- will reduce the performance of the automation process and also, are chance to getting errors and exceptions if the web element not found within the spceified period of time.
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+
+
+driver=webdriver.Chrome()
+"""
+#driver.implicitly_wait(10)
+#this line is applicable to all the lines below this code. We can also use this command to specific place also.
+#also advantage is, this will only work during where synchronization and also will not take max time, if the page load early then it will automate to load the next statement.
+driver.get("https://www.google.com/")
+driver.maximize_window()
+
+a=driver.find_element(By.ID,"APjFqb")
+a.send_keys("selenium")
+a.submit()#whenever we want to perform enter key, we can use submit method.
+
+
+driver.find_element(By.XPATH,"//a[@href='https://www.selenium.dev/']//h3[@class='LC20lb MBeuO DKV0Md'][normalize-space()='Selenium']").click()
+#Note:Industry follows a standard that web page should load within 10 secs else, we need to report.
+"""
+
+from selenium import webdriver
+from selenium.common import NoSuchElementException, ElementNotVisibleException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+
+driver=webdriver.Chrome()
+#w=WebDriverWait(driver,10)#This is the explicit wait#this is basic syntax
+w=WebDriverWait(driver,10,poll_frequency=2,ignored_exceptions=Exception)#this will handle the exception and will not throw error and move forward to next statement.
+driver.maximize_window()
+driver.get("https://www.google.com/")
+
+g=driver.find_element(By.NAME,"q")
+g.send_keys("Selenium")
+g.submit()
+
+C=w.until(EC.presence_of_element_located(((By.XPATH,"//a[@href='https://www.selenium.dev/']//h3[@class='LC20lb MBeuO DKV0Md'][normalize-space()='Selenium']"))))
+C.click()
+
+"""
+Advantages:
+    1)More stable/effective method 
+    2)we can also ignore exceptions in this method automatically
+Disadvantage:
+    1)we need to specify wait whenever required.
+    2)this method also has the poll frequency
+"""
